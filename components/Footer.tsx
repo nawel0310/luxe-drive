@@ -1,71 +1,44 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-black border-t border-zinc-900 pt-16 pb-8">
-      <div className="container mx-auto px-4">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 mb-12">
-          <div>
-            <Link href="/" className="font-heading italic text-2xl font-bold tracking-tighter text-white mb-6 block drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
-              LUXEDRIVE
-            </Link>
-            <p className="text-zinc-400 mb-6 max-w-xs">
-              Elevando el estándar de la excelencia automotriz. Tu próximo vehículo de ensueño te espera.
-            </p>
-            <div className="flex gap-4">
-              <Link href="#" className="text-zinc-400 hover:text-primary transition-colors hover:scale-110">
-                <Instagram className="h-5 w-5" />
-              </Link>
-              <Link href="#" className="text-zinc-400 hover:text-primary transition-colors hover:scale-110">
-                <Facebook className="h-5 w-5" />
-              </Link>
-              <Link href="#" className="text-zinc-400 hover:text-primary transition-colors hover:scale-110">
-                <Twitter className="h-5 w-5" />
-              </Link>
-              <Link href="#" className="text-zinc-400 hover:text-primary transition-colors hover:scale-110">
-                <Linkedin className="h-5 w-5" />
-              </Link>
+    <footer className="bg-black py-24 border-t border-white/5">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col items-center justify-between gap-12 text-center md:flex-row md:text-left">
+            
+            {/* Massive Logo */}
+            <div className="flex-1">
+                 <Link href="/" className="font-heading text-4xl font-bold tracking-tighter text-white sm:text-6xl md:text-8xl hover:text-zinc-300 transition-colors">
+                    LUXE<span className="text-primary">DRIVE</span>
+                </Link>
             </div>
-          </div>
-          
-          <div>
-            <h4 className="font-semibold text-white mb-6 italic">Enlaces Rápidos</h4>
-            <ul className="space-y-4">
-              <li><Link href="#models" className="text-zinc-400 hover:text-primary transition-colors">Modelos</Link></li>
-              <li><Link href="#about" className="text-zinc-400 hover:text-primary transition-colors">Nosotros</Link></li>
-              <li><Link href="#testimonials" className="text-zinc-400 hover:text-primary transition-colors">Testimonios</Link></li>
-              <li><Link href="#contact" className="text-zinc-400 hover:text-primary transition-colors">Contacto</Link></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-semibold text-white mb-6 italic">Legal</h4>
-            <ul className="space-y-4">
-              <li><Link href="#" className="text-zinc-400 hover:text-primary transition-colors">Términos y Condiciones</Link></li>
-              <li><Link href="#" className="text-zinc-400 hover:text-primary transition-colors">Política de Privacidad</Link></li>
-              <li><Link href="#" className="text-zinc-400 hover:text-primary transition-colors">Cookies</Link></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-semibold text-white mb-6 italic">Newsletter</h4>
-            <p className="text-zinc-400 mb-4 text-sm">Suscríbete para recibir noticias exclusivas.</p>
-            <div className="flex gap-2">
-              <input 
-                type="email" 
-                placeholder="Tu email" 
-                className="bg-zinc-900 border-zinc-800 text-white px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-primary rounded-none placeholder:text-zinc-600"
-              />
-              <button className="bg-primary text-white px-4 py-2 font-semibold hover:bg-primary/90 transition-colors rounded-none shadow-[0_0_10px_rgba(155,8,13,0.3)]">
-                OK
-              </button>
+
+            {/* Links */}
+            <div className="flex gap-12">
+                <div className="flex flex-col gap-4">
+                     <span className="text-xs font-bold uppercase tracking-widest text-zinc-500">Explorar</span>
+                     <Link href="#models" className="text-white hover:text-primary transition-colors">Colección</Link>
+                     <Link href="#about" className="text-white hover:text-primary transition-colors">Herencia</Link>
+                     <Link href="#testimonials" className="text-white hover:text-primary transition-colors">Relatos</Link>
+                </div>
+                <div className="flex flex-col gap-4">
+                     <span className="text-xs font-bold uppercase tracking-widest text-zinc-500">Legal</span>
+                     <Link href="#" className="text-zinc-400 hover:text-white transition-colors">Privacidad</Link>
+                     <Link href="#" className="text-zinc-400 hover:text-white transition-colors">Términos</Link>
+                </div>
             </div>
-          </div>
         </div>
-        
-        <div className="border-t border-zinc-900 pt-8 text-center text-sm text-zinc-500">
-          <p>&copy; {new Date().getFullYear()} LuxeDrive. Todos los derechos reservados.</p>
+
+        <div className="mt-24 flex flex-col items-center justify-between gap-6 border-t border-white/5 pt-8 md:flex-row">
+            <p className="text-xs text-zinc-600">
+                &copy; {new Date().getFullYear()} LuxeDrive Automotive Group.
+            </p>
+            <div className="flex gap-6">
+                {/* Social placeholders */}
+                <div className="h-2 w-2 rounded-full bg-zinc-800" />
+                <div className="h-2 w-2 rounded-full bg-zinc-800" />
+                <div className="h-2 w-2 rounded-full bg-zinc-800" />
+            </div>
         </div>
       </div>
     </footer>

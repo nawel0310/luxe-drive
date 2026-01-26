@@ -1,68 +1,125 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "./ui/button";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { FadeIn } from "./FadeIn";
-
-const heroImages = [
-  "/images/car_001.jpg",
-  "/images/car_002.jpg",
-  "/images/car_003.jpg"
-];
+import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  
+  // Parallax effect for the background
+  const y = useTransform(scrollY, [0, 1000], [0, 400]);
+  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-black">
-      {/* Background Carousel */}
-      <Carousel
-        plugins={[
-          Autoplay({
-            delay: 5000,
-          }),
-        ]}
-        className="absolute inset-0 h-full w-full [&_[data-slot=carousel-content]]:h-full"
+    <section 
+      ref={containerRef} 
+      className="relative h-[110vh] w-full overflow-hidden bg-black"
+    >
+      {/* Background Image with Parallax */}
+      <motion.div 
+        style={{ y, opacity }}
+        className="absolute inset-0 z-0"
       >
-        <CarouselContent className="h-full ml-0">
-          {heroImages.map((src, index) => (
-            <CarouselItem key={index} className="h-full pl-0 relative">
-              <div 
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                  style={{ backgroundImage: `url('${src}')` }}
-              >
-                <div className="absolute inset-0 bg-black/70" />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+        <Image
+          src="/images/car_003.jpg" // Using the most dramatic car image
+          alt="Luxury Car Background"
+          fill
+          className="object-cover opacity-60"
+          priority
+        />
+        {/* Cinematic Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
+      </motion.div>
 
-      <div className="container relative z-10 mx-auto flex h-full flex-col items-center justify-center px-4 text-center">
-        <FadeIn direction="down">
-             <h1 className="mb-6 font-heading text-5xl font-bold italic leading-tight tracking-tight text-white sm:text-7xl md:text-8xl drop-shadow-2xl">
-              Excelencia en <span className="text-primary">Movimiento</span>
-            </h1>
-        </FadeIn>
-       
-        <FadeIn delay={0.2}>
-            <p className="mx-auto mb-10 max-w-2xl text-lg text-gray-200 sm:text-xl font-light shadow-black drop-shadow-md">
-            Descubre la fusión perfecta entre ingeniería de vanguardia y lujo absoluto. 
-            Vehículos diseñados para quienes no aceptan compromisos.
-            </p>
-        </FadeIn>
+      {/* Content */}
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 pt-20 text-center">
+        
+        {/* Eyebrow Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-6 flex items-center gap-4"
+        >
+          <div className="h-[1px] w-12 bg-primary/50" />
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary">
+            Est. 2026
+          </span>
+          <div className="h-[1px] w-12 bg-primary/50" />
+        </motion.div>
 
-        <FadeIn delay={0.4}>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg" className="rounded-none bg-primary px-8 py-6 text-lg font-semibold hover:bg-primary/90 shadow-[0_0_15px_rgba(155,8,13,0.5)] transition-all hover:shadow-[0_0_25px_rgba(155,8,13,0.8)]">
-                <Link href="#contact">Solicitar Asesoría</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-none border-white bg-transparent px-8 py-6 text-lg font-semibold text-white hover:bg-white/10 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                <Link href="#models">Ver Modelos</Link>
-            </Button>
-            </div>
-        </FadeIn>
+        {/* Main Title - Split for animation */}
+        <div className="overflow-hidden">
+          <motion.h1
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+            className="font-heading text-6xl font-medium tracking-tighter text-white sm:text-8xl md:text-9xl lg:text-[10rem] leading-none mix-blend-overlay"
+          >
+            PRECISION
+          </motion.h1>
+        </div>
+        
+        <div className="overflow-hidden">
+           <motion.h1
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+            className="font-heading text-6xl font-medium tracking-tighter text-white sm:text-8xl md:text-9xl lg:text-[10rem] leading-none"
+          >
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">
+              ELEGANCE
+            </span>
+          </motion.h1>
+        </div>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1 }}
+          className="mt-8 max-w-xl text-lg font-light leading-relaxed text-white/70 sm:text-xl"
+        >
+          Donde la ingeniería se encuentra con el arte. 
+          <br className="hidden sm:block"/>
+          Una experiencia de conducción redefinida.
+        </motion.p>
+
+        {/* Action Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="mt-12"
+        >
+          <Link 
+            href="#models"
+            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/20 bg-white/5 px-8 py-4 backdrop-blur-sm transition-all hover:bg-white/10 hover:border-white/40"
+          >
+             <span className="text-sm font-bold uppercase tracking-widest text-white">
+               Descubrir Colección
+             </span>
+             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-white transition-transform duration-300 group-hover:translate-x-1">
+               →
+             </span>
+          </Link>
+        </motion.div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      >
+        <div className="h-16 w-[1px] bg-gradient-to-b from-transparent via-white/50 to-transparent" />
+        <span className="text-[10px] uppercase tracking-widest text-white/30">Scroll</span>
+      </motion.div>
     </section>
   );
 }

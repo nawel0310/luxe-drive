@@ -1,74 +1,87 @@
 "use client";
 
-import { FadeIn } from "./FadeIn";
-import { 
-  Clock, 
-  ShieldCheck, 
-  Wrench, 
-  MapPin, 
-  Ticket, 
-  BadgeDollarSign 
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 
 const benefits = [
   {
-    text: "Atención personalizada 24/7",
-    icon: Clock
+    title: "Atención 24/7",
+    description: "Concierge personal disponible en todo momento para cualquier requerimiento."
   },
   {
-    text: "Garantía extendida internacional",
-    icon: ShieldCheck
+    title: "Garantía Global",
+    description: "Cobertura internacional integral en toda nuestra red de servicios."
   },
   {
-    text: "Mantenimiento incluido por 3 años",
-    icon: Wrench
+    title: "Mantenimiento Premium",
+    description: "Servicio técnico especializado incluido durante los primeros 3 años."
   },
   {
-    text: "Entrega a domicilio en cualquier parte del país",
-    icon: MapPin
-  },
-  {
-    text: "Acceso exclusivo a eventos de la marca",
-    icon: Ticket
-  },
-  {
-    text: "Financiamiento a medida",
-    icon: BadgeDollarSign
+    title: "Entrega White-Glove",
+    description: "Llevamos su vehículo a cualquier punto del país con el máximo cuidado."
   },
 ];
 
 export function WhyChooseUs() {
   return (
-    <section id="why-us" className="py-24 relative overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/car_why_choose_us.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-black/85" />
-      </div>
+    <section className="relative bg-zinc-950 py-32">
+      <div className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Sticky Title */}
+            <div className="lg:sticky lg:top-32">
+                 <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-8"
+                 >
+                    <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                        La Diferencia
+                    </span>
+                    <h2 className="mt-4 font-heading text-5xl font-medium text-white sm:text-6xl leading-tight">
+                        Por qué elegir <br />
+                        <span className="text-zinc-500">LuxeDrive?</span>
+                    </h2>
+                 </motion.div>
+                 
+                 <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="text-lg text-zinc-400 max-w-md font-light leading-relaxed"
+                 >
+                    No solo vendemos automóviles. Cultivamos relaciones duraderas basadas en la confianza, la discreción y una excelencia inquebrantable.
+                 </motion.p>
+            </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="mx-auto max-w-3xl text-center">
-          <FadeIn>
-            <h2 className="mb-8 font-heading text-4xl font-bold italic text-white sm:text-5xl drop-shadow-lg">
-                Por qué elegir <span className="text-primary text-shadow-glow">LuxeDrive</span>
-            </h2>
-            <p className="mb-12 text-lg text-gray-300">
-                No solo vendemos autos, construimos relaciones duraderas basadas en la confianza y la excelencia.
-            </p>
-          </FadeIn>
-          
-          <div className="grid gap-8 sm:grid-cols-2 text-left mb-12">
-            {benefits.map((benefit, index) => (
-              <FadeIn key={index} delay={index * 0.1} direction={index % 2 === 0 ? "left" : "right"}>
-                  <div className="flex items-center gap-4 group p-4 rounded-lg hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-white/10">
-                    <benefit.icon className="h-8 w-8 text-primary flex-shrink-0 transition-transform group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(155,8,13,0.5)]" />
-                    <span className="text-zinc-200 group-hover:text-white transition-colors text-lg font-light">{benefit.text}</span>
-                  </div>
-              </FadeIn>
-            ))}
-          </div>
+            {/* List */}
+            <div className="flex flex-col gap-12">
+                {benefits.map((benefit, index) => (
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        className="group border-b border-white/10 pb-12 transition-colors hover:border-primary/50"
+                    >
+                        <div className="flex items-start gap-6">
+                            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/5 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                                <Check size={20} />
+                            </div>
+                            <div>
+                                <h3 className="font-heading text-2xl text-white group-hover:text-primary transition-colors duration-300">
+                                    {benefit.title}
+                                </h3>
+                                <p className="mt-2 text-zinc-400 font-light group-hover:text-zinc-300 transition-colors">
+                                    {benefit.description}
+                                </p>
+                            </div>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
         </div>
       </div>
     </section>
