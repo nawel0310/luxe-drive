@@ -91,7 +91,7 @@ export function Models() {
       </div>
 
       <Dialog open={!!selectedModel} onOpenChange={(open) => !open && setSelectedModel(null)}>
-        <DialogContent className="max-w-5xl border-0 bg-zinc-950 p-0 text-white sm:rounded-none overflow-hidden ring-0 outline-none">
+        <DialogContent className="max-w-[95vw] sm:max-w-[90vw] lg:max-w-7xl border-0 bg-zinc-950 p-0 text-white sm:rounded-none overflow-hidden ring-0 outline-none">
              {selectedModel && (
                  <div className="grid md:grid-cols-2">
                     <div className="relative aspect-square md:aspect-auto h-full w-full">
