@@ -60,10 +60,27 @@ export function Hero() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
             className="font-heading text-6xl font-medium tracking-tighter text-white sm:text-8xl md:text-9xl lg:text-[10rem] leading-none mix-blend-overlay"
           >
-            PRECISION
+            PRECISIÓN
           </motion.h1>
         </div>
-        
+
+        {/* "&" entre los títulos */}
+        <div className="overflow-hidden">
+          <motion.div
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
+            className="flex justify-center"
+          >
+            <span
+              className="text-6xl font-medium italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 leading-none sm:text-8xl md:text-9xl lg:text-[10rem]"
+              style={{ fontFamily: "'Times New Roman', Times, serif" }}
+            >
+              &amp;
+            </span>
+          </motion.div>
+        </div>
+
         <div className="overflow-hidden">
            <motion.h1
             initial={{ y: 100 }}
@@ -72,7 +89,7 @@ export function Hero() {
             className="font-heading text-6xl font-medium tracking-tighter text-white sm:text-8xl md:text-9xl lg:text-[10rem] leading-none"
           >
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">
-              ELEGANCE
+              ELEGANCIA
             </span>
           </motion.h1>
         </div>

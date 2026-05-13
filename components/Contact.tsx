@@ -36,14 +36,14 @@ export function Contact() {
                         <Input 
                             type="text" 
                             placeholder="Nombre" 
-                            className="h-14 w-full border-b border-white/10 bg-transparent px-0 text-lg text-white placeholder:text-zinc-600 focus-visible:border-primary focus-visible:ring-0 rounded-none transition-colors"
+                            className="h-14 w-full border-b border-white/10 bg-transparent px-4 text-lg text-white placeholder:text-zinc-600 focus-visible:border-primary focus-visible:ring-0 rounded-none transition-colors"
                         />
                     </div>
                     <div className="group relative">
                          <Input 
                             type="email" 
                             placeholder="Email" 
-                            className="h-14 w-full border-b border-white/10 bg-transparent px-0 text-lg text-white placeholder:text-zinc-600 focus-visible:border-primary focus-visible:ring-0 rounded-none transition-colors"
+                            className="h-14 w-full border-b border-white/10 bg-transparent px-4 text-lg text-white placeholder:text-zinc-600 focus-visible:border-primary focus-visible:ring-0 rounded-none transition-colors"
                         />
                     </div>
                 </div>
@@ -51,7 +51,7 @@ export function Contact() {
                 <div className="group relative">
                     <Textarea 
                         placeholder="Mensaje" 
-                        className="min-h-[150px] w-full border-b border-white/10 bg-transparent px-0 text-lg text-white placeholder:text-zinc-600 focus-visible:border-primary focus-visible:ring-0 rounded-none resize-none transition-colors"
+                        className="min-h-[150px] w-full border-b border-white/10 bg-transparent px-4 text-lg text-white placeholder:text-zinc-600 focus-visible:border-primary focus-visible:ring-0 rounded-none resize-none transition-colors"
                     />
                 </div>
 

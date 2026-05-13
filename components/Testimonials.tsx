@@ -27,13 +27,28 @@ const testimonials = [
 ];
 
 export function Testimonials() {
+  const AUTO_PLAY = true; // cambia a true para activar desplazamiento automático
+
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
+    if (!AUTO_PLAY) return;
     const timer = setInterval(() => {
       setActiveIndex((current) => (current + 1) % testimonials.length);
     }, 5000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") {
+        setActiveIndex((current) => (current + 1) % testimonials.length);
+      } else if (e.key === "ArrowLeft") {
+        setActiveIndex((current) => (current - 1 + testimonials.length) % testimonials.length);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   return (
@@ -89,6 +104,7 @@ export function Testimonials() {
                 />
             ))}
         </div>
+
       </div>
     </section>
   );
