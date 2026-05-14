@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -34,11 +35,8 @@ export function Navbar() {
             }`}
           >
             {/* Logo */}
-            <Link
-              href="/"
-              className="font-heading text-xl font-bold tracking-widest text-white transition-opacity hover:opacity-80"
-            >
-              LUXE<span className="text-primary">DRIVE</span>
+            <Link href="/" className="transition-opacity hover:opacity-80">
+              <Image src="/images/luxe-drive-logo.webp" alt="LuxeDrive" width={899} height={315} style={{ height: '40px', width: 'auto' }} />
             </Link>
 
             {/* Desktop Links */}

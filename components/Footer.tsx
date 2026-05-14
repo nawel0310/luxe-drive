@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -8,8 +9,8 @@ export function Footer() {
             
             {/* Massive Logo */}
             <div className="flex-1">
-                 <Link href="/" className="font-heading text-4xl font-bold tracking-tighter text-white sm:text-6xl md:text-8xl hover:text-zinc-300 transition-colors">
-                    LUXE<span className="text-primary">DRIVE</span>
+                <Link href="/" className="inline-block transition-opacity hover:opacity-80">
+                  <Image src="/images/luxe-drive-logo.webp" alt="LuxeDrive" width={899} height={315} style={{ height: '80px', width: 'auto' }} />
                 </Link>
             </div>
 

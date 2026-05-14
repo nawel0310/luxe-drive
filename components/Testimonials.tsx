@@ -56,7 +56,7 @@ export function Testimonials() {
       {/* Background Texture */}
       <div className="absolute inset-0 opacity-20">
          <Image 
-            src="/images/car_001.jpg" 
+            src="/images/car_001.webp"
             alt="bg" 
             fill 
             className="object-cover blur-3xl grayscale"

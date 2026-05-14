@@ -24,7 +24,7 @@ export function Hero() {
         className="absolute inset-0 z-0"
       >
         <Image
-          src="/images/car_003.jpg" // Using the most dramatic car image
+          src="/images/car_003.webp"
           alt="Luxury Car Background"
           fill
           className="object-cover opacity-60"

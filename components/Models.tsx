@@ -91,9 +91,9 @@ export function Models() {
       </div>
 
       <Dialog open={!!selectedModel} onOpenChange={(open) => !open && setSelectedModel(null)}>
-        <DialogContent className="max-w-[95vw] sm:max-w-[90vw] lg:max-w-7xl border-0 bg-zinc-950 p-0 text-white sm:rounded-none overflow-hidden ring-0 outline-none">
+        <DialogContent className="max-w-[95vw] sm:max-w-[90vw] lg:max-w-7xl border-0 bg-zinc-950 p-0 text-white sm:rounded-none overflow-hidden ring-0 outline-none max-h-[85dvh] md:max-h-none">
              {selectedModel && (
-                 <div className="grid md:grid-cols-2">
+                 <div className="grid md:grid-cols-2 overflow-y-auto md:overflow-visible max-h-[85dvh] md:max-h-none">
                     <div className="relative aspect-square md:aspect-auto h-full w-full">
                         <Image 
                             src={selectedModel.image} 
@@ -102,7 +102,7 @@ export function Models() {
                             className="object-cover"
                         />
                     </div>
-                    <div className="flex flex-col justify-center p-12">
+                    <div className="flex flex-col justify-center p-8 md:p-12">
                         <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4">{selectedModel.tagline}</span>
                         <DialogHeader>
                             <DialogTitle className="font-heading text-5xl font-medium text-white mb-6">
