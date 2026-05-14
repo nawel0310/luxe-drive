@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
+import WhatsAppButton from "@/components/WhatsAppButton"
 
 const Models = dynamic(() => import("@/components/Models").then(mod => mod.Models));
 const Testimonials = dynamic(() => import("@/components/Testimonials").then(mod => mod.Testimonials));
@@ -20,6 +21,7 @@ export default function Home() {
       <Testimonials />
       <Contact />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 }
